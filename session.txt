@@ -1,0 +1,12 @@
+"Define, Develop and Deploy DSC Resources" 
+
+Even though there is an abundance of DSC resources, there is always room for more. Perhaps there is some Windows feature or setting that hasn't been covered yet. Or you have a home-grown application that needs a resource. In this demo-heavy session you will learn everything you need to know about designing and deploying a DSC resource. We'll start with the legacy DSC resource model and finish with a modern, high-quality DSC resource. Lots of code, best practices and demos abound. (105 min)
+
+What is a DSC Resource?
+Resource Architecture
+Creating a Legacy resource
+Testing with Invoke-DSCResource
+Deploy a Legacy resource
+Creating a Class based resource
+Deployment
+

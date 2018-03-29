@@ -7,6 +7,8 @@ Enable-WindowsErrorReporting
 #endregion
 
 #region xDSCResourceDesigner
+
+# https://github.com/PowerShell/xDSCResourceDesigner
 find-module xdscresourcedesigner  
 # install-module xdscresourcedesigner
 
@@ -26,10 +28,12 @@ New-xDscResource -Name myWER -Property $prop -Path . -ModuleName myWERConfigurat
 #endregion
 
 #region Edit
+
 psedit .\myWERConfiguration\DSCResources\myWER\myWER.psm1
 
 #copy files
 Copy-Item -path .\myWERConfiguration -Recurse -Container -Destination $env:ProgramFiles\WindowsPowerShell\Modules -force -PassThru
+
 #endregion
 
 #region Testing

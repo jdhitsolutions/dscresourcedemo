@@ -38,6 +38,7 @@ New-xDscResource -Name CustomPageFile -Property $p2,$p3,$p4 -ModuleName myPageFi
 #endregion
 
 #region edit the modules
+
 psedit .\myPageFileSetting\DSCResources\AutomaticManagedPageFile\AutomaticManagedPageFile.psm1
 psedit .\myPageFileSetting\DSCResources\CustomPageFile\CustomPageFile.psm1
 

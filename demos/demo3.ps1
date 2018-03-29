@@ -1,5 +1,8 @@
 #create a class-based version
 
+# https://docs.microsoft.com/en-us/powershell/dsc/authoringresourceclass
+# https://www.petri.com/create-programmer-style-class-based-dsc-resources
+
 Return "Still not a script - demo!"
 
 Enum Ensure {

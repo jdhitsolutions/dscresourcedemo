@@ -1,5 +1,3 @@
-#requires -version 5.1
-#requires -module xDSCResourceDesigner
 Function Convert-MofToClass {
     [cmdletbinding()]
     Param(
@@ -64,7 +62,24 @@ $dsctype
         $prop
     
     } #foreach item
+
+#define a Get hashtable with the properties
+
+$import.DscResourceProperties | foreach -Begin {
+
+$get=@"
+<#
+`tyou may need to get most of these properties
+
+"@
+} -Process {
+
+$get+= "`n`t`$this.$($_.name) = <code>"
+} -end {
+$get+="`n`t#>"
+}
     
+#create the class outline as a here string
     $outline = @"
 #You need a unique resource name
 
@@ -94,6 +109,8 @@ $converted
 [$($import.ResourceName)] Get()  {        
 
     # Return this instance or construct a new instance.
+    $get
+
     return `$this 
 
 } #Get   

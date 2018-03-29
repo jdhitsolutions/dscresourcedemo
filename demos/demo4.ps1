@@ -1,5 +1,7 @@
 #create a class-based resource from xDSCResourceDesigner
 
+Return "Not a script, silly. Walk through demo."
+
 $props = @()
 $props+= New-xDscResourceProperty -Name Name -Attribute Key -Type String
 $props+= New-xDscResourceProperty -Name Enabled -Attribute Required -Type Boolean
@@ -34,6 +36,7 @@ $classprop
 
 $items
 
+#define a template for the class
 $template = @"
 
 [DSCResource()]

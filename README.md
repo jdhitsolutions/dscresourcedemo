@@ -1,4 +1,4 @@
-#DSC Resource Demo Material
+# DSC Resource Demo Material
 This repository contains presentation material and demos on designing and developing DSC resources. The demonstrations include both traditional DSC resources using the xDSCResourceDesigner module as well as class-based DSC resources introduced in PowerShell 5.0.
 
 All material was developed and tested with Windows 10 running PowerShell 5.1.16299.

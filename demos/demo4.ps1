@@ -76,5 +76,7 @@ $items
 $template | Set-Clipboard
 
 #You could also create a Plaster template
+cls
+Invoke-Plaster -TemplatePath .\DSCClassResourceTemplate -DestinationPath $env:temp\MyResource
 
-
+code $env:temp\MyResource

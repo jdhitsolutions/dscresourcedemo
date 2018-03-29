@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Project" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>DSCClassResource</name>
+    <id>d9f6238f-bc91-4987-aad8-869a5e155266</id>
+    <version>1.0.0</version>
+    <title>DSCClassResource</title>
+    <description>Create a class-based DSC resource</description>
+    <author>Jeff Hicks</author>
+    <tags>DSC,Class</tags>
+  </metadata>
+  <parameters>
+    <parameter name='ResourceName' type='text' prompt='Enter the name of your new resource'/>
+    <parameter name="Key" type='text' prompt='Enter the name of your KEY resource property, e.g. Name'/>
+    <parameter name="KeyType" type="text" prompt="What is the KEY resource property TYPE" default = "string"/>
+    <parameter name="Ensure" prompt="Do you need an Ensure property?" type="choice" default="1">
+      <choice label="&amp;Yes" value="True"/>
+      <choice label="&amp;No" value="False"/>
+    </parameter>
+    <parameter name='ModuleName' type='text' prompt='Enter the name of module you will create'/>
+    <parameter name='Version' type='text' prompt='Enter the initial module version' default = '0.1.0'/>
+    <parameter name='Description' type='text' prompt='Enter a description of this module'/>
+    <parameter name="ModuleAuthor" type='user-fullname' store='text' prompt='Enter the module author name'/>
+    <parameter name="Company" type='text' prompt='Enter the company or organization name' store='text' default = "JDH IT Solutions, Inc."/>
+  </parameters>
+  <content>
+    <message>
+
+
+      ---------------------------------------
+      | Scaffolding your DSC Resource Module |
+      ---------------------------------------
+        |  |\ /|  |   /| /|  |\  |  | / \ |
+        |  |/ \|  |  / |/ |  | \ |  |/   \| 
+
+   Creating your module manifest for ${PLASTER_PARAM_ModuleName}
+
+    </message>
+    <newModuleManifest 
+    destination='${PLASTER_PARAM_ModuleName}.psd1'           
+    moduleVersion = '$PLASTER_PARAM_Version'       
+    rootModule = '${PLASTER_PARAM_ModuleName}.psm1'       
+    encoding = 'UTF8-NoBOM'
+    author = '$PLASTER_PARAM_ModuleAuthor'
+    description = '$PLASTER_PARAM_Description'
+    openInEditor = "true"     
+    companyName = '$PLASTER_PARAM_Company'
+    powerShellVersion = '5.0'
+    dscResourcesToExport = '$PLASTER_PARAM_ResourceName'
+    />
+    <templateFile source='Module.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1'/>
+    <templateFile source='changelog.txt' destination='changelog.txt'/>
+    <templateFile source='README.md' destination='README.md'/>
+    <templateFile source='license.txt' destination='license.txt'/>
+    <templateFile source='test\Module.T.ps1' destination='test\${PLASTER_PARAM_ModuleName}.Tests.ps1' />
+    <requireModule name="Pester" message="Without Pester, you will not be able to run the provided Pester test to validate your module manifest file.`nWithout version 4.0.3 or later, VS Code will not display Pester warnings and errors in the Problems panel." minimumVersion="4.0.3"/>
+    <message>
+
+
+*******************************************************************************
+Scaffolding for your class-based DSC resource module is complete. 
+Open ${PLASTER_DestinationPath}\${PLASTER_PARAM_ModuleName}.psm1 in your favorite editor. 
+
+You will need to add the remaining DSC properties and add code for the Set(), 
+Test() and Get() methods. Although you might find it easier to put code into 
+an external set of functions that your class methods can simply call.
+    </message>
+  </content>
+</plasterManifest>

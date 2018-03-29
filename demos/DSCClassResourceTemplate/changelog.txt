@@ -1,0 +1,5 @@
+#Changelog for <%=$PLASTER_PARAM_ModuleName%> 
+
+v<%=$PLASTER_PARAM_Version%>
+initial build
+

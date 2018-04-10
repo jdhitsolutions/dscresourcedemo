@@ -82,7 +82,7 @@ $copy = @{
     MaximumSize = 4096
   }
   
-  Invoke-DscResource -Name CustomPageFile2 -ModuleName myPageFileSettingClass -Method Test -Property $config -Verbose
+  Invoke-DscResource -Name CustomPageFile2 -ModuleName myPageFileSettingClass -Method test -Property $config -Verbose
   Invoke-DscResource -Name CustomPageFile2 -ModuleName myPageFileSettingClass -Method get -Property $config -Verbose
   Invoke-DscResource -Name CustomPageFile2 -ModuleName myPageFileSettingClass -Method set -Property $config -Verbose
   
@@ -90,6 +90,6 @@ $copy = @{
     Enabled= "True"
   }
 
-Invoke-DscResource -Name AutomaticManagedPageFile2 -ModuleName myPageFileSettingClass -Method Test -Property $config -Verbose
+Invoke-DscResource -Name AutomaticManagedPageFile2 -ModuleName myPageFileSettingClass -Method test -Property $config -Verbose
 Invoke-DscResource -Name AutomaticManagedPageFile2 -ModuleName myPageFileSettingclass -Method get -Property $config -Verbose
 Invoke-DscResource -Name AutomaticManagedPageFile2 -ModuleName myPageFileSettingClass -Method set -Property $config -Verbose

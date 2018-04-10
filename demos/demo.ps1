@@ -1,9 +1,11 @@
 Return "This is a demo script you dunderhead."
 
 #region start with code
+
 Get-WindowsErrorReporting
 Disable-WindowsErrorReporting
 Enable-WindowsErrorReporting
+
 #endregion
 
 #region xDSCResourceDesigner

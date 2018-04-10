@@ -5,21 +5,21 @@ Return "Are you still trying to run demo scripts?"
 psedit .\myPageFileFunctions.ps1
 
 <#
+
 Planning: might need 2 resources
 
 AutomaticManagedPageFile
  Enabled = True | False
 
 CustomPageFile
-  InitialSize [key]
-  MaximumSize [mandatory]
-
+[uint32] InitialSize [key]
+[uint32] MaximumSize [mandatory]
   
 #>
 
 #region building the module
 
-New-xDscResourceProperty -name Enabled -Attribute Key -Type Boolean | tee -Variable p1
+New-xDscResourceProperty -name Enabled -Attribute Key -Type Boolean | tee-object -Variable p1
 $p1
 
 New-xDscResource -Name AutomaticManagedPageFile -Property $p1 -ModuleName myPageFileSetting -Path . -Force
@@ -30,7 +30,7 @@ New-xDscResourceProperty -Name InitialSize -Type Uint32 -Attribute Key -Descript
 New-xDscResourceProperty -Name MaximumSize -Type Uint32 -Attribute Required -Description "Set the maximum size in MB" | tee -var p3
 
 #create a read-ony property
-New-xDscResourceProperty -Name Name -Type String -Attribute Read | Tee -Variable p4
+New-xDscResourceProperty -Name Name -Type String -Attribute Read | Tee-object -Variable p4
 
 #append this resource to the existing module
 New-xDscResource -Name CustomPageFile -Property $p2,$p3,$p4 -ModuleName myPageFileSetting -Path . -Force
@@ -55,7 +55,7 @@ $config = @{
   Enabled=$False
 }
 
-Invoke-DscResource -Name AutomaticManagedPageFile -ModuleName myPageFileSetting -Method Test -Property $config -Verbose
+Invoke-DscResource -Name AutomaticManagedPageFile -ModuleName myPageFileSetting -Method test -Property $config -Verbose
 Invoke-DscResource -Name AutomaticManagedPageFile -ModuleName myPageFileSetting -Method get -Property $config -Verbose
 Invoke-DscResource -Name AutomaticManagedPageFile -ModuleName myPageFileSetting -Method set -Property $config -Verbose
 
@@ -65,7 +65,7 @@ $config = @{
   MaximumSize = 4096
 }
 
-Invoke-DscResource -Name CustomPageFile -ModuleName myPageFileSetting -Method Test -Property $config -Verbose
+Invoke-DscResource -Name CustomPageFile -ModuleName myPageFileSetting -Method test -Property $config -Verbose
 Invoke-DscResource -Name CustomPageFile -ModuleName myPageFileSetting -Method get -Property $config -Verbose
 Invoke-DscResource -Name CustomPageFile -ModuleName myPageFileSetting -Method set -Property $config -Verbose
 
@@ -114,6 +114,6 @@ cls
 Start-DscConfiguration -Path .\CustomPF -wait -verbose -CimSession $cim
 
 Get-DscConfiguration -CimSession $cim
-Get-ciminstance win32_pagefilesetting -cimsession $cim | Select *
+Get-ciminstance win32_pagefilesetting -cimsession $cim | Select-Object *
 
 #endregion

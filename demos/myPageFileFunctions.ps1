@@ -102,7 +102,7 @@ Function Get-PageFileSetting {
     else {
         Write-Verbose "Connecting to $computername"
         Get-CimInstance -ClassName Win32_PageFileSetting -ComputerName $Computername |
-            Select PSComputername, Name, InitialSize, MaximumSize
+            Select-object PSComputername, Name, InitialSize, MaximumSize
     }
 } 
     
@@ -129,7 +129,7 @@ Function Get-MyPageFile {
         $MaximumSize = $pfs.MaximumSize
     }
     Get-CimInstance -ClassName Win32_PageFileUsage -ComputerName $Computername |
-        Select Name, @{Name = "AutomaticManagement"; Expression = { $cs.AutomaticManagedPagefile}},
+        Select-Object Name, @{Name = "AutomaticManagement"; Expression = { $cs.AutomaticManagedPagefile}},
     @{Name = "InitialSize"; Expression = {$InitialSize}},
     @{Name = "MaximumSize"; Expression = {$MaximumSize}},
     @{Name = "Computername"; Expression = {$_.PSComputername}}

@@ -77,6 +77,7 @@ $template | Set-Clipboard
 
 #You could also create a Plaster template
 cls
+#create the MyResource DSC resource module
 Invoke-Plaster -TemplatePath .\DSCClassResourceTemplate -DestinationPath $env:temp\MyResource
 
 code $env:temp\MyResource
